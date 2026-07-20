@@ -1,0 +1,64 @@
+generated: '2026-07-19'
+method: derived
+source: graphql/glife-schema.graphql
+docs: null
+summary:
+  types:
+  - token
+  model: GraphQL mutation-based credential login returning a bearer token (JWT-style)
+    + refresh token; token presented on subsequent requests. No OpenAPI securitySchemes
+    (GraphQL API).
+  transport: Authorization header bearer token (derived; single GraphQL POST endpoint)
+login_operations:
+- mutation: login
+  args:
+  - username
+  - password
+  returns: LoginResponse{token,refreshToken,user}
+  audience: internal/back-office
+- mutation: loginEcommerce
+  args:
+  - email
+  - mobileCode
+  - mobileNumber
+  - mode
+  - password
+  returns: LoginResponse{token,refreshToken,user}
+  audience: ecommerce customer
+- mutation: loginDriver
+  returns: LoginResponse
+  audience: driver app
+- mutation: registerCustomer
+  args:
+  - email
+  - mobileCode
+  - mobileNumber
+  - firstName
+  - lastName
+  - companyName
+  - outletName
+  returns: RegisterResponse
+- mutation: registerEcommerceCustomer
+  args:
+  - email
+  - mobileCode
+  - mobileNumber
+  - fullName
+  - password
+  - companyName
+  returns: RegisterResponse
+- mutation: forgotPassword
+  returns: —
+- mutation: resetPassword
+  returns: —
+- mutation: generateOTPVerification
+  returns: —
+  note: SMS/email OTP issuance
+- mutation: verifyOTPVerification
+  args:
+  - code
+  returns: CommonResponse
+  note: OTP verification step
+notes: Derived from live GraphQL introspection. LoginResponse exposes token + refreshToken;
+  two-factor via OTP mutations. Bearer transport inferred from standard GraphQL/JWT
+  practice — not published in a securityScheme.
