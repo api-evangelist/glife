@@ -1,0 +1,32 @@
+# Glife Technologies
+
+> Glife is a Singapore-based food-tech company growing a better food future across Southeast Asia. It operates a farm-to-business/consumer commerce and supply-chain platform connecting farmers, suppliers, restaurants, and retail customers, backed by a GraphQL application API.
+
+## API
+
+- [Glife GraphQL API](https://api-sg.glifeware.com/graphql): GraphQL endpoint backing the Glife commerce + supply-chain platform (535 queries, 870 mutations, 139 subscriptions).
+
+## Specs
+
+- [GraphQL SDL](graphql/glife-schema.graphql): Full introspected schema.
+- [GraphQL introspection](graphql/glife-graphql-introspection.json): Raw introspection response.
+- [Authentication](authentication/glife-authentication.yml): Token-based auth via login mutations.
+- [Conventions](conventions/glife-conventions.yml): Pagination, filtering, subscriptions.
+- [Data model](data-model/glife-data-model.yml): Core entity-relationship graph.
+
+## Docs
+
+- [Website](https://glife.com.sg)
+- [About / Corporate](https://glife.com.sg/corporate)
+- [What we do](https://glife.com.sg/what-we-do)
+- [For restaurants](https://glife.com.sg/restaurant)
+- [For suppliers](https://glife.com.sg/supplier)
+- [Articles](https://glife.com.sg/articles)
+- [Careers](https://glife.com.sg/careers)
+- [Contact](https://glife.com.sg/contact-us)
+
+## Company
+
+- [LinkedIn](https://linkedin.com/company/glifetech)
+- [Facebook](https://www.facebook.com/glifesg)
+- [Instagram](https://www.instagram.com/glifegroup/)

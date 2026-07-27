@@ -1,7 +1,24 @@
 aid: glife
 name: Glife
-description: Glife is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: Glife Technologies Pte Ltd is a Singapore-based food-tech company on a
+  mission to grow a better food future across Southeast Asia. Glife operates a farm-to-table
+  commerce and supply-chain platform that connects farmers and suppliers with restaurants,
+  retailers, and consumers — spanning sourcing, pricing, ordering, inventory, warehousing,
+  and delivery. Its web and mobile applications are backed by a GraphQL API (api-sg.glifeware.com)
+  exposing commerce, content, and supply-chain operations. Glife is backed by 500 Global.
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://glife.com.sg/img/seo/og/Home.webp
 url: https://raw.githubusercontent.com/api-evangelist/glife/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,15 +28,80 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Food Tech
+- Grocery
+- Supply Chain
+- E-Commerce
+- GraphQL
+- Southeast Asia
+- AgTech
+- Logistics
+apis:
+- aid: glife:graphql-api
+  name: Glife GraphQL API
+  description: GraphQL API backing the Glife food-tech commerce and supply-chain platform.
+    Exposes 535 queries, 870 mutations, and 139 subscriptions across ecommerce (customers,
+    products, categories, orders, articles, promotions), supply chain (purchase/sales
+    orders, invoices, vendors, warehouses, inventory, deliveries), pricing, and operations.
+    Authentication is token-based via login mutations. Captured via live introspection;
+    publicly reachable but not a formally published developer API.
+  baseURL: https://api-sg.glifeware.com/graphql
+  humanURL: https://glife.com.sg
+  tags:
+  - GraphQL
+  - E-Commerce
+  - Supply Chain
+  - Food Tech
+  properties:
+  - type: GraphQL
+    url: graphql/glife-graphql.md
+  - type: Authentication
+    url: authentication/glife-authentication.yml
+  - type: Conventions
+    url: conventions/glife-conventions.yml
+  - type: DataModel
+    url: data-model/glife-data-model.yml
+  - type: MCPServer
+    url: mcp/glife-mcp.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/glife-domain-security.yml
 - type: Website
   url: https://glife.com.sg
+- type: Blog
+  url: https://glife.com.sg/articles
+- type: SignUp
+  url: https://glife.com.sg/register
+- type: Login
+  url: https://glife.com.sg/login
+- type: Support
+  url: https://glife.com.sg/contact-us
+- type: Authentication
+  url: authentication/glife-authentication.yml
+- type: Conventions
+  url: conventions/glife-conventions.yml
+- type: DataModel
+  url: data-model/glife-data-model.yml
+- type: MCPServer
+  url: mcp/glife-mcp.yml
+- type: LLMsTxt
+  url: llms/glife-llms.txt
+- type: LinkedIn
+  url: https://linkedin.com/company/glifetech
+- type: Facebook
+  url: https://www.facebook.com/glifesg
+- type: Instagram
+  url: https://www.instagram.com/glifegroup/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

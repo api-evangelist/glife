@@ -1,0 +1,38 @@
+generated: '2026-07-19'
+method: derived
+source: graphql/glife-schema.graphql
+protocol: GraphQL (single POST endpoint)
+endpoint: https://api-sg.glifeware.com/graphql
+authentication:
+  style: bearer token from login mutation
+  see: authentication/glife-authentication.yml
+pagination:
+  style: offset (react-admin ra-data-graphql convention)
+  list_pattern: all<Entity>(page, perPage, sortField, sortOrder, filter)
+  count_pattern: _all<Entity>Meta(page, perPage, filter) { count }
+  evidence: 186 all<Entity> list queries paired with 125 _all<Entity>Meta count queries
+    in the Query type
+filtering:
+  style: filter input-object argument on list queries (<Entity>Filter input types)
+sorting:
+  params:
+  - sortField
+  - sortOrder
+realtime:
+  style: GraphQL subscriptions
+  payload: <Entity>SubscriptionPayload { mutation, node, previousValues }
+  entity_count: 136
+response_envelope:
+  mutation_results: per-domain <X>Response types commonly carry success/message/errors
+    fields (LoginResponse, CommonResponse, UpdateAppSettingResponse)
+idempotency:
+  supported: false
+  note: No idempotency-key mechanism observed in the GraphQL schema.
+scalars:
+- Date
+- JSON
+- JSONObject
+- BigInt
+cross_links:
+  authentication: authentication/glife-authentication.yml
+  data_model: data-model/glife-data-model.yml

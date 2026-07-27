@@ -1,0 +1,204 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: graphql/glife-schema.graphql
+note: Candidate MCP tool list derived from a curated subset of live GraphQL root fields
+  (schema exposes 535 queries + 870 mutations). No official Glife MCP server is published;
+  governance starting point, not a running server.
+server:
+  name: glife
+  transport: http
+  graphql_endpoint: https://api-sg.glifeware.com/graphql
+tools:
+- name: getProduct
+  kind: query
+  description: GraphQL query getProduct
+  arguments:
+  - id
+  source_operation: graphql/glife-schema.graphql#Query.getProduct
+- name: allProducts
+  kind: query
+  description: GraphQL query allProducts
+  arguments:
+  - filter
+  - itemUOMFilter
+  - checkUOMFilter
+  - preProcessItemFilter
+  - statusFollowExcel
+  - first
+  - skip
+  - orderBy
+  - selectPreProcessItem
+  - isExistingInventory
+  source_operation: graphql/glife-schema.graphql#Query.allProducts
+- name: getCategory
+  kind: query
+  description: GraphQL query getCategory
+  arguments:
+  - id
+  source_operation: graphql/glife-schema.graphql#Query.getCategory
+- name: allCategories
+  kind: query
+  description: GraphQL query allCategories
+  arguments:
+  - filter
+  - first
+  - skip
+  - orderBy
+  source_operation: graphql/glife-schema.graphql#Query.allCategories
+- name: getCustomer
+  kind: query
+  description: GraphQL query getCustomer
+  arguments:
+  - id
+  source_operation: graphql/glife-schema.graphql#Query.getCustomer
+- name: getOrder
+  kind: query
+  description: GraphQL query getOrder
+  arguments:
+  - id
+  source_operation: graphql/glife-schema.graphql#Query.getOrder
+- name: allOrders
+  kind: query
+  description: GraphQL query allOrders
+  arguments:
+  - filter
+  - activityLogFilter
+  - productFilter
+  - packingListFilter
+  - customerFilter
+  - shortageFilter
+  - deliveryItemFilter
+  - deliveryListFilter
+  - auditSalesOrderFilter
+  - first
+  - skip
+  - orderBy
+  - deliveryAddressFilter
+  - deliveryContactFilter
+  - lineItemFilter
+  source_operation: graphql/glife-schema.graphql#Query.allOrders
+- name: getArticle
+  kind: query
+  description: GraphQL query getArticle
+  arguments:
+  - id
+  source_operation: graphql/glife-schema.graphql#Query.getArticle
+- name: allArticles
+  kind: query
+  description: GraphQL query allArticles
+  arguments:
+  - filter
+  - first
+  - skip
+  - orderBy
+  source_operation: graphql/glife-schema.graphql#Query.allArticles
+- name: getPromotionPricing
+  kind: query
+  description: GraphQL query getPromotionPricing
+  arguments:
+  - id
+  source_operation: graphql/glife-schema.graphql#Query.getPromotionPricing
+- name: loginEcommerce
+  kind: mutation
+  description: GraphQL mutation loginEcommerce
+  arguments:
+  - email
+  - mobileCode
+  - mobileNumber
+  - mode
+  - password
+  source_operation: graphql/glife-schema.graphql#Mutation.loginEcommerce
+- name: registerEcommerceCustomer
+  kind: mutation
+  description: GraphQL mutation registerEcommerceCustomer
+  arguments:
+  - email
+  - mobileCode
+  - mobileNumber
+  - fullName
+  - password
+  - companyName
+  source_operation: graphql/glife-schema.graphql#Mutation.registerEcommerceCustomer
+- name: forgotPassword
+  kind: mutation
+  description: GraphQL mutation forgotPassword
+  arguments:
+  - email
+  - mobileCode
+  - mobileNumber
+  source_operation: graphql/glife-schema.graphql#Mutation.forgotPassword
+- name: resetPassword
+  kind: mutation
+  description: GraphQL mutation resetPassword
+  arguments:
+  - email
+  - newPassword
+  - mobileCode
+  - mobileNumber
+  source_operation: graphql/glife-schema.graphql#Mutation.resetPassword
+- name: generateOTPVerification
+  kind: mutation
+  description: GraphQL mutation generateOTPVerification
+  arguments: []
+  source_operation: graphql/glife-schema.graphql#Mutation.generateOTPVerification
+- name: verifyOTPVerification
+  kind: mutation
+  description: GraphQL mutation verifyOTPVerification
+  arguments:
+  - code
+  source_operation: graphql/glife-schema.graphql#Mutation.verifyOTPVerification
+- name: createContactInquiry
+  kind: mutation
+  description: GraphQL mutation createContactInquiry
+  arguments:
+  - fullName
+  - email
+  - message
+  - phoneCode
+  - phoneNumber
+  source_operation: graphql/glife-schema.graphql#Mutation.createContactInquiry
+- name: createCustomerAddress
+  kind: mutation
+  description: GraphQL mutation createCustomerAddress
+  arguments:
+  - type
+  - name
+  - addressDetail
+  - addressDetail2
+  - postalCode
+  - state
+  - phoneNo
+  - phoneNo2
+  - primaryContactCode
+  - contactName
+  - city
+  - country
+  - syncedAt
+  - code
+  - userCustomers
+  - locationCode
+  source_operation: graphql/glife-schema.graphql#Mutation.createCustomerAddress
+- name: updateCustomerAddress
+  kind: mutation
+  description: GraphQL mutation updateCustomerAddress
+  arguments:
+  - id
+  - type
+  - name
+  - addressDetail
+  - addressDetail2
+  - postalCode
+  - state
+  - phoneNo
+  - phoneNo2
+  - primaryContactCode
+  - contactName
+  - city
+  - country
+  - syncedAt
+  - customerGroupId
+  - userCustomers
+  - code
+  - locationCode
+  source_operation: graphql/glife-schema.graphql#Mutation.updateCustomerAddress

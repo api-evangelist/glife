@@ -1,0 +1,654 @@
+generated: '2026-07-19'
+method: derived
+source: graphql/glife-schema.graphql
+note: 'Focused entity-relationship graph derived from the GraphQL object types (full
+  schema: 729 object types; this captures the core commerce/supply-chain + content
+  domain). Relationships are object-typed fields on each entity.'
+domains:
+  ecommerce:
+  - Customer
+  - CustomerAddress
+  - User
+  - Order
+  - OrderLineItem
+  - Product
+  - Category
+  - Subcategory
+  - Article
+  supply_chain:
+  - PurchaseOrder
+  - SalesOrder
+  - PurchaseInvoice
+  - SalesInvoice
+  - Vendor
+  - Warehouse
+  - Inventory
+  - GoodsReceiveNote
+  - GoodsIssueNote
+  - StandingOrder
+  - DeliveryList
+  pricing:
+  - PromotionPricing
+  - ContractPricing
+  - GroupPricing
+  - Currency
+  - PaymentTerm
+  ops:
+  - Team
+  - Role
+  - PermissionRole
+  - Vehicle
+  - Notification
+  - Badge
+entities:
+- entity: Customer
+  relationships:
+  - field: addresses
+    target: Address
+    cardinality: has_many
+  - field: currency
+    target: Currency
+    cardinality: has_one
+  - field: deliveryZoneObj
+    target: ParameterValue
+    cardinality: has_one
+  - field: customerGroup
+    target: CustomerGroup
+    cardinality: has_one
+  - field: customerCategory
+    target: CustomerCategory
+    cardinality: has_one
+  - field: groupPricingGroup
+    target: GroupPricingGroup
+    cardinality: has_one
+  - field: gstProdPostingGroups
+    target: GstPosting
+    cardinality: has_many
+  - field: userCustomers
+    target: UserCustomer
+    cardinality: has_many
+  - field: deliveryNotePhotos
+    target: Photo
+    cardinality: has_many
+  - field: customerPriceGroup
+    target: CustomerPriceGroup
+    cardinality: has_one
+  - field: roles
+    target: CustomerUser
+    cardinality: has_many
+  - field: productCustomerProcessings
+    target: ProductCustomerProcessing
+    cardinality: has_many
+  - field: productCustomers
+    target: ProductCustomer
+    cardinality: has_many
+  - field: productCustomerThresholdPercentages
+    target: ProductCustomerThresholdPercentage
+    cardinality: has_many
+  - field: procurementProductTypeCustomers
+    target: ProcurementProductTypeCustomer
+    cardinality: has_many
+  - field: basketBalanceObj
+    target: BasketObj
+    cardinality: has_one
+  - field: basketBalanceOutObj
+    target: BasketObj
+    cardinality: has_one
+  - field: basketBalanceInObj
+    target: BasketObj
+    cardinality: has_one
+  - field: capataBuyerGroup
+    target: CapataBuyerContract
+    cardinality: has_one
+  - field: procurementConfig
+    target: ProcurementConfig
+    cardinality: has_one
+- entity: CustomerAddress
+  relationships: []
+- entity: User
+  relationships:
+  - field: badge
+    target: Badge
+    cardinality: has_one
+  - field: customer
+    target: Customer
+    cardinality: has_one
+  - field: vehicleAssignee
+    target: VehicleAssignee
+    cardinality: has_one
+  - field: userCustomers
+    target: UserCustomer
+    cardinality: has_many
+  - field: warehouse
+    target: Warehouse
+    cardinality: has_one
+  - field: salesAdmin
+    target: User
+    cardinality: has_one
+  - field: photo
+    target: Photo
+    cardinality: has_many
+- entity: Product
+  relationships:
+  - field: photos
+    target: Photo
+    cardinality: has_many
+  - field: baseCosting
+    target: DefaultCosting
+    cardinality: has_one
+  - field: basePricing
+    target: DefaultPricing
+    cardinality: has_one
+  - field: allPricings
+    target: DefaultPricing
+    cardinality: has_many
+  - field: allPricingDisplayWebs
+    target: DefaultPricing
+    cardinality: has_many
+  - field: allCostings
+    target: DefaultCosting
+    cardinality: has_many
+  - field: itemUOMs
+    target: ItemUOM
+    cardinality: has_many
+  - field: itemUOMOrderStatistics
+    target: ItemUOMStatistic
+    cardinality: has_many
+  - field: itemUOMPurchaseStatistics
+    target: ItemUOMStatistic
+    cardinality: has_many
+  - field: pgBaseUOM
+    target: ExternalUom
+    cardinality: has_many
+  - field: productTrimming
+    target: ProductTrimming
+    cardinality: has_one
+  - field: productMY
+    target: Product
+    cardinality: has_one
+  - field: productVendors
+    target: ProductVendor
+    cardinality: has_many
+  - field: category
+    target: Category
+    cardinality: has_one
+  - field: subcategory
+    target: Subcategory
+    cardinality: has_one
+  - field: productCustomers
+    target: ProductCustomer
+    cardinality: has_many
+  - field: productPricingGroups
+    target: ProductPricingGroup
+    cardinality: has_many
+  - field: productCustomerProcessings
+    target: ProductCustomerProcessing
+    cardinality: has_many
+  - field: productCustomerThresholdPercentages
+    target: ProductCustomerThresholdPercentage
+    cardinality: has_many
+  - field: productWarehouses
+    target: ProductWarehouse
+    cardinality: has_many
+  - field: productTypeObj
+    target: ParameterValue
+    cardinality: has_one
+  - field: procurementCustomerSpecificProducts
+    target: ProcurementCustomerSpecificProduct
+    cardinality: has_many
+  - field: procurementConfig
+    target: ProcurementConfig
+    cardinality: has_one
+  - field: procurementConfigs
+    target: ProcurementConfig
+    cardinality: has_many
+  - field: uomMappings
+    target: UOMMapping
+    cardinality: has_many
+  - field: preProcessItems
+    target: PreProcessItem
+    cardinality: has_many
+  - field: combinedProducts
+    target: CombinedProduct
+    cardinality: has_many
+- entity: ProductType
+  relationships:
+  - field: procurementConfig
+    target: ProcurementConfig
+    cardinality: has_one
+  - field: procurementConfigs
+    target: ProcurementConfig
+    cardinality: has_many
+- entity: Category
+  relationships:
+  - field: subcategories
+    target: Subcategory
+    cardinality: has_many
+  - field: products
+    target: Product
+    cardinality: has_many
+  - field: photos
+    target: Photo
+    cardinality: has_many
+  - field: topProducts
+    target: Product
+    cardinality: has_many
+- entity: Subcategory
+  relationships:
+  - field: products
+    target: Product
+    cardinality: has_many
+- entity: Order
+  relationships:
+  - field: deliveryAddress
+    target: OrderShippingAddress
+    cardinality: has_one
+  - field: deliveryContact
+    target: OrderBillingAddress
+    cardinality: has_one
+  - field: groups
+    target: OrderGroup
+    cardinality: has_many
+  - field: shortageGroups
+    target: OrderGroup
+    cardinality: has_many
+  - field: unitOfMeasures
+    target: UnitOfMeasure
+    cardinality: has_many
+  - field: products
+    target: Product
+    cardinality: has_many
+  - field: productTypeCounts
+    target: ProductTypeCount
+    cardinality: has_many
+  - field: customer
+    target: Customer
+    cardinality: has_one
+  - field: packingList
+    target: PackingList
+    cardinality: has_one
+  - field: deliveryZoneObj
+    target: ParameterValue
+    cardinality: has_one
+  - field: currency
+    target: Currency
+    cardinality: has_one
+  - field: latestPrintSOAudit
+    target: AuditSalesOrder
+    cardinality: has_one
+  - field: latestPrintSO2Audit
+    target: AuditSalesOrder
+    cardinality: has_one
+  - field: latestPrintDOAudit
+    target: AuditSalesOrder
+    cardinality: has_one
+  - field: externalPurchaseOrder
+    target: ExternalPurchaseOrder
+    cardinality: has_one
+  - field: deliveryItem
+    target: DeliveryItem
+    cardinality: has_one
+  - field: deliveryNotePhotos
+    target: Photo
+    cardinality: has_many
+  - field: signaturePhotos
+    target: Photo
+    cardinality: has_many
+  - field: creationLog
+    target: ActivityLog
+    cardinality: has_one
+  - field: customerBillingAddress
+    target: Address
+    cardinality: has_one
+  - field: customerDeliveryAddress
+    target: Address
+    cardinality: has_one
+  - field: goodsReceiveNotes
+    target: GoodsReceiveNote
+    cardinality: has_many
+  - field: packByCustomer
+    target: PackByCustomer
+    cardinality: has_one
+  - field: loadedOutObj
+    target: LoadedOutObj
+    cardinality: has_one
+  - field: deliveryList
+    target: DeliveryList
+    cardinality: has_many
+  - field: lineItems
+    target: OrderLineItem
+    cardinality: has_many
+- entity: OrderLineItem
+  relationships:
+  - field: defaultPricing
+    target: DefaultPricing
+    cardinality: has_one
+  - field: product
+    target: Product
+    cardinality: has_one
+- entity: Article
+  relationships:
+  - field: articleCategory
+    target: ArticleCategory
+    cardinality: has_one
+  - field: articleSubcategory
+    target: ArticleSubcategory
+    cardinality: has_one
+  - field: creator
+    target: User
+    cardinality: has_one
+  - field: meta
+    target: Meta
+    cardinality: has_one
+- entity: ArticleCategory
+  relationships:
+  - field: articleSubcategories
+    target: ArticleSubcategory
+    cardinality: has_many
+- entity: ArticleSubcategory
+  relationships:
+  - field: articleCategory
+    target: ArticleCategory
+    cardinality: has_one
+  - field: articles
+    target: Article
+    cardinality: has_many
+- entity: Warehouse
+  relationships: []
+- entity: Inventory
+  relationships:
+  - field: inventoryWarehouse
+    target: InventoryWarehouse
+    cardinality: has_one
+  - field: defaultPricing
+    target: DefaultPricing
+    cardinality: has_one
+  - field: defaultCosting
+    target: DefaultCosting
+    cardinality: has_one
+  - field: warehouse
+    target: Warehouse
+    cardinality: has_one
+  - field: product
+    target: Product
+    cardinality: has_one
+  - field: baseInventory
+    target: Inventory
+    cardinality: has_one
+- entity: PurchaseOrder
+  relationships: []
+- entity: SalesInvoice
+  relationships:
+  - field: deliveryAddress
+    target: InvoiceShippingAddress
+    cardinality: has_one
+  - field: deliveryContact
+    target: InvoiceBillingAddress
+    cardinality: has_one
+  - field: groups
+    target: SalesInvoiceGroup
+    cardinality: has_many
+  - field: unitOfMeasures
+    target: UnitOfMeasure
+    cardinality: has_many
+  - field: products
+    target: Product
+    cardinality: has_many
+  - field: productTypeCounts
+    target: ProductTypeCount
+    cardinality: has_many
+  - field: customer
+    target: Customer
+    cardinality: has_one
+  - field: deliveryZoneObj
+    target: ParameterValue
+    cardinality: has_one
+  - field: currency
+    target: Currency
+    cardinality: has_one
+- entity: PurchaseInvoice
+  relationships:
+  - field: groups
+    target: PurchaseInvoiceGroup
+    cardinality: has_many
+  - field: unitOfMeasures
+    target: UnitOfMeasure
+    cardinality: has_many
+  - field: products
+    target: Product
+    cardinality: has_many
+  - field: productTypeCounts
+    target: ProductTypeCount
+    cardinality: has_many
+  - field: vendor
+    target: Vendor
+    cardinality: has_one
+  - field: currency
+    target: Currency
+    cardinality: has_one
+- entity: Vendor
+  relationships:
+  - field: address
+    target: VendorAddress
+    cardinality: has_one
+  - field: currency
+    target: Currency
+    cardinality: has_one
+  - field: gstProdPostingGroups
+    target: GstPosting
+    cardinality: has_many
+- entity: StandingOrder
+  relationships:
+  - field: deliveryAddress
+    target: OrderShippingAddress
+    cardinality: has_one
+  - field: groups
+    target: StandingOrderGroup
+    cardinality: has_many
+  - field: customer
+    target: Customer
+    cardinality: has_one
+  - field: orders
+    target: Order
+    cardinality: has_many
+- entity: PromotionPricing
+  relationships:
+  - field: promotionPricingGroup
+    target: PromotionPricingGroup
+    cardinality: has_one
+  - field: product
+    target: Product
+    cardinality: has_one
+  - field: defaultPricing
+    target: DefaultPricing
+    cardinality: has_one
+  - field: basePricing
+    target: DefaultPricing
+    cardinality: has_one
+- entity: ContractPricing
+  relationships:
+  - field: contractPricingGroup
+    target: ContractPricingGroup
+    cardinality: has_one
+  - field: product
+    target: Product
+    cardinality: has_one
+  - field: defaultPricing
+    target: DefaultPricing
+    cardinality: has_one
+  - field: basePricing
+    target: DefaultPricing
+    cardinality: has_one
+- entity: GroupPricing
+  relationships:
+  - field: groupPricingGroup
+    target: GroupPricingGroup
+    cardinality: has_one
+  - field: product
+    target: Product
+    cardinality: has_one
+  - field: defaultPricing
+    target: DefaultPricing
+    cardinality: has_one
+  - field: basePricing
+    target: DefaultPricing
+    cardinality: has_one
+  - field: unitOfMeasures
+    target: UnitOfMeasure
+    cardinality: has_many
+- entity: Currency
+  relationships: []
+- entity: PaymentTerm
+  relationships: []
+- entity: DeliveryList
+  relationships:
+  - field: driver
+    target: User
+    cardinality: has_one
+  - field: vehicle
+    target: Vehicle
+    cardinality: has_one
+  - field: vehicleAssignee
+    target: VehicleAssignee
+    cardinality: has_one
+  - field: deliveryItems
+    target: DeliveryItem
+    cardinality: has_many
+  - field: orders
+    target: Order
+    cardinality: has_many
+  - field: customersActualInObj
+    target: ActualObj
+    cardinality: has_one
+  - field: customersActualOutObj
+    target: ActualObj
+    cardinality: has_one
+  - field: expectedInObj
+    target: BasketObj
+    cardinality: has_one
+  - field: expectedOutObj
+    target: BasketObj
+    cardinality: has_one
+  - field: balanceObj
+    target: BasketObj
+    cardinality: has_one
+  - field: secondaryDeliveryItems
+    target: DeliveryItem
+    cardinality: has_many
+- entity: DeliveryItem
+  relationships:
+  - field: order
+    target: Order
+    cardinality: has_one
+  - field: photos
+    target: Photo
+    cardinality: has_many
+  - field: deliveryList
+    target: DeliveryList
+    cardinality: has_one
+  - field: deliveryLocation
+    target: DeliveryLocation
+    cardinality: has_one
+  - field: deliveryNotePhotos
+    target: Photo
+    cardinality: has_many
+  - field: actualInObj
+    target: ActualObj
+    cardinality: has_one
+  - field: actualOutObj
+    target: ActualObj
+    cardinality: has_one
+  - field: customerActualInObj
+    target: ActualObj
+    cardinality: has_one
+  - field: customerActualOutObj
+    target: ActualObj
+    cardinality: has_one
+  - field: expectedInObj
+    target: ExpectedInObj
+    cardinality: has_one
+  - field: deliveredByUser
+    target: User
+    cardinality: has_one
+- entity: GoodsReceiveNote
+  relationships:
+  - field: groups
+    target: GRNGroup
+    cardinality: has_many
+  - field: warehouse
+    target: Warehouse
+    cardinality: has_one
+  - field: purchase
+    target: Purchase
+    cardinality: has_one
+  - field: order
+    target: Order
+    cardinality: has_one
+  - field: auditCreate
+    target: AuditGoodsReceiveNote
+    cardinality: has_one
+  - field: vendor
+    target: Vendor
+    cardinality: has_one
+  - field: approvedByUser
+    target: User
+    cardinality: has_one
+  - field: purchaseIgnoreDeleted
+    target: Purchase
+    cardinality: has_one
+  - field: stockReturns
+    target: StockReturn
+    cardinality: has_many
+- entity: GoodsIssueNote
+  relationships:
+  - field: groups
+    target: GINGroup
+    cardinality: has_many
+  - field: warehouse
+    target: Warehouse
+    cardinality: has_one
+  - field: purchase
+    target: Purchase
+    cardinality: has_one
+  - field: order
+    target: Order
+    cardinality: has_one
+- entity: Team
+  relationships:
+  - field: teamMembers
+    target: User
+    cardinality: has_many
+  - field: department
+    target: Department
+    cardinality: has_one
+- entity: Role
+  relationships:
+  - field: permissionRoles
+    target: PermissionRole
+    cardinality: has_many
+- entity: PermissionRole
+  relationships:
+  - field: role
+    target: Role
+    cardinality: has_one
+  - field: permission
+    target: Permission
+    cardinality: has_one
+- entity: Vehicle
+  relationships:
+  - field: vehicleAssignees
+    target: VehicleAssignee
+    cardinality: has_many
+  - field: lastestDeliveryList
+    target: DeliveryList
+    cardinality: has_one
+- entity: Badge
+  relationships:
+  - field: user
+    target: User
+    cardinality: has_one
+- entity: Notification
+  relationships:
+  - field: creator
+    target: User
+    cardinality: has_one

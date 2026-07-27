@@ -1,0 +1,26 @@
+generated: '2026-07-19'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: glife.com.sg
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 18 07:12:11 2026 GMT
+  hsts: false
+- host: api-sg.glifeware.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 20 22:16:41 2026 GMT
+  hsts: false
+domains:
+- domain: glife.com.sg
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: glifeware.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
