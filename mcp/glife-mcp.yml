@@ -2,9 +2,9 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: graphql/glife-schema.graphql
-note: Candidate MCP tool list derived from a curated subset of live GraphQL root fields
-  (schema exposes 535 queries + 870 mutations). No official Glife MCP server is published;
-  governance starting point, not a running server.
+note: Candidate MCP tool list derived from a curated subset of live GraphQL root fields (schema exposes
+  535 queries + 870 mutations). No official Glife MCP server is published; governance starting point,
+  not a running server.
 server:
   name: glife
   transport: http
@@ -202,3 +202,9 @@ tools:
   - code
   - locationCode
   source_operation: graphql/glife-schema.graphql#Mutation.updateCustomerAddress
+deployment:
+  mode: none
+  verified: derived
+  tools: 19
+  checked: '2026-08-12'
+  source: catalog MCP census
