@@ -6,6 +6,17 @@ description: Glife Technologies Pte Ltd is a Singapore-based food-tech company o
   retailers, and consumers — spanning sourcing, pricing, ordering, inventory, warehousing,
   and delivery. Its web and mobile applications are backed by a GraphQL API (api-sg.glifeware.com)
   exposing commerce, content, and supply-chain operations. Glife is backed by 500 Global.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
